@@ -1,7 +1,6 @@
 var canvas = document.getElementById('canvas').getContext("2d");
 var floor = new Floor(0, 590, 600, 100,"red");
 var bg = new Bg(0,0,650,900, "assets/bg.png");
-//var flower = new Flower(0,0,50,50, "assets/flower1.png")
 var chamadoNormal = new ChamadoNormal(0,0,50,50, "blue");
 var bg2 = new Bg(0,-900,650,900, "assets/bg.png")
 var estagiario = new Estagiario(200,500,100,80, "assets/estagiario1.png");
