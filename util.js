@@ -4,6 +4,7 @@ class Obj{
   timer = 0;
   sla = 0;
   lifes = 0;
+  velocidade = 2;
 
   constructor(x, y, width, height, color){
     this.x  = x;
@@ -41,7 +42,7 @@ animation(nome, limit){
 class Estagiario extends Obj{
   dir = 0;
   up = 0;
-  lifes = 10;
+  lifes = 1;
   pts = 0;
   
 
@@ -67,9 +68,8 @@ class Estagiario extends Obj{
 }
 
 class ChamadoUrgente extends Obj{
-  //spider
   move(){
-    this.y += 4;
+    this.y += this.velocidade;
     if (this.y > 900){
       this.y = -50;
       this.x = Math.random() * (400 - 0);
