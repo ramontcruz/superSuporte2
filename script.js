@@ -61,6 +61,22 @@ document.addEventListener("keyup", function(event){
   }
 });
 
+/*
+document.onmousemove = function(e){
+  if(e.pageX<=estagiario.x){
+    estagiario.dir = 3;
+    console.log("mouse "+e.pageX+" estagiario x"+estagiario.x);
+  } else {estagiario.dir = -3;
+    console.log("mouse "+e.pageX+" estagiario x"+estagiario.x);}
+  if(e.pageY<=estagiario.y){
+    estagiario.up = -3;
+    console.log("mouse "+e.pageY+" estagiario y "+estagiario.y);
+  } else {estagiario.up = 3;
+    console.log("mouse "+e.pageY+" estagiario y"+estagiario.y);}
+}
+*/
+
+/*
 document.addEventListener("keydown", function(event){
   if (event.key === "r"){
     document.location.reload();
@@ -77,17 +93,18 @@ document.addEventListener("keydown", function(event){
   if (event.key === "p"){
     botao.classList.add("hide");
     formControl.classList.add("hide");
-    
-
     play="jogo";
   }
 });
+
+
 
 document.addEventListener("keyup", function(event){
   if (event.key === "p"){
     //botao.classList.add("hide");
   }
 });
+*/
 
 botao.onclick = () => {
   botao.classList.add("hide");
