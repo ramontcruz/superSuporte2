@@ -26,37 +26,37 @@ var nome = document.querySelector(".form-control");
 
 
 document.addEventListener("keydown", function(event){
-  if (event.key === "a"){
+  if (event.key === "ArrowLeft"){
     estagiario.dir = -3;
   }
-  if (event.key === "d"){
+  if (event.key === "ArrowRight"){
     estagiario.dir = 3;
   }
 });
 
 document.addEventListener("keyup", function(event){
-  if (event.key === "a"){
+  if (event.key === "ArrowLeft"){
     estagiario.dir = 0;
   }
-  if (event.key === "d"){
+  if (event.key === "ArrowRight"){
     estagiario.dir = 0;
   }
 });
 
 document.addEventListener("keydown", function(event){
-  if (event.key === "w"){
+  if (event.key === "ArrowUp"){
     estagiario.up = -3;
   }
-  if (event.key === "s"){
+  if (event.key === "ArrowDown"){
     estagiario.up = 3;
   }
 });
 
 document.addEventListener("keyup", function(event){
-  if (event.key === "w"){
+  if (event.key === "ArrowUp"){
     estagiario.up = 0;
   }
-  if (event.key === "s"){
+  if (event.key === "ArrowDown"){
     estagiario.up = 0;
   }
 });
