@@ -42,7 +42,7 @@ animation(nome, limit){
 class Estagiario extends Obj{
   dir = 0;
   up = 0;
-  lifes = 1;
+  lifes = 10;
   pts = 0;
   
 
