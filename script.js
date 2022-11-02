@@ -1,4 +1,5 @@
 var canvas = document.getElementById('canvas').getContext("2d");
+var canvasArea = document.querySelector(".canvas-area")
 var floor = new Floor(0, 590, 600, 100,"red");
 var bg = new Bg(0,0,650,900, "assets/bg.png");
 var chamadoNormal = new ChamadoNormal(0,0,50,50, "blue");
@@ -11,11 +12,17 @@ var pontuacao = new Bg(0,350,200,200, "assets/pontuacao1.JPG");
 
 var text_points = new Text();
 var text_lifes = new Text();
+var text_name = new Text();
 var gameover = new Text();
 
-var play = true;
+var play = "inicio";
 let vidas = "usuários tristes";
 let pontos = "estrelas";
+
+var botao = document.getElementById("botao");
+var botaoReiniciar = document.getElementById("botao-reiniciar");
+var formControl = document.querySelector(".input-group");
+var nome = document.querySelector(".form-control");
 
 
 document.addEventListener("keydown", function(event){
@@ -66,6 +73,32 @@ document.addEventListener("keyup", function(event){
   }
 });
 
+document.addEventListener("keydown", function(event){
+  if (event.key === "p"){
+    botao.classList.add("hide");
+    formControl.classList.add("hide");
+    
+
+    play="jogo";
+  }
+});
+
+document.addEventListener("keyup", function(event){
+  if (event.key === "p"){
+    //botao.classList.add("hide");
+  }
+});
+
+botao.onclick = () => {
+  botao.classList.add("hide");
+  formControl.classList.add("hide");
+  play="jogo";
+}
+
+botaoReiniciar.onclick = () => {
+  document.location.reload();
+}
+
 
 
 
@@ -98,7 +131,7 @@ function collides() {
 
 function gameOver(){
   if(estagiario.lifes <= 0){
-    play = false;
+    play = "final";
   }
 }
 
@@ -106,26 +139,36 @@ function draw() {
   bg.draw();
   bg2.draw();
   floor.draw();
-  if (play){
+  if (play=="inicio"){
+    
+    canvasArea.classList.add("hide");
+
+  } else if (play=="jogo"){
+    canvasArea.classList.remove("hide");
     estagiario.draw();
     chamadoUrgente.draw();
     chamadoNormal.draw();
     this.vidas = (10-estagiario.lifes)+" usuários tristes";
     this.pontos = estagiario.pts+" estrelas";
     text_points.draw(this.pontos, 515, 550, "gray");
-    text_lifes.draw(this.vidas, 515, 580, "gray");
-
+    text_lifes.draw(this.vidas, 515, 580, "gray");   
+    text_name.draw(nome.value, 515, 520, "gray");  
     
-    
-  } else {
+  } else if (play=="final"){
    // Tela de Game Over
-    
    //Fundo Game Over
-    if (play==false && estagiario.pts>2) {
+    if (estagiario.pts>2) {
+      //canvasArea.classList.add("hide");
       bgGameOver2.draw();
-    } else if (play==false && estagiario.pts<=2){
+      botaoReiniciar.classList.remove("hide");
+      //
+    } else if (estagiario.pts<=2){
       //alterar para bg de campeao
+      //canvasArea.classList.add("hide");
       bgGameOver2.draw();
+      botaoReiniciar.classList.remove("hide");
+      //
+      //canvasArea.classList.add("hide");
     }
 
 
@@ -182,18 +225,15 @@ function draw() {
     
   }
   
- 
-  
-  
 }
 
 function update() {
   bg.move(3, 900, 0);
   bg2.move(3, 0, -900);
-  if(play){
+  if(play=="jogo"){
     estagiario.move();
     estagiario.animation("estagiario", 4);
-    
+
     //atualiza ícone do chamado urgente
     chamadoUrgente.move();
     var posChamadoUrgente = parseInt((600-chamadoUrgente.y)/100);
@@ -238,13 +278,11 @@ function update() {
       chamadoNormal.velocidade=6;
       chamadoUrgente.velocidade=6;
     
-    }
-
-    
-    
+    }   
     collides();
     gameOver();
-  }
+  
+  } 
 
 }
 

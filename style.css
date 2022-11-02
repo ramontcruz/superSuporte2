@@ -13,3 +13,7 @@ canvas{
   right: 0;
   background-color: #4b4b4b;
 }
+
+.hide {
+  display: none !important;
+}
