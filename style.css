@@ -5,6 +5,7 @@ body {
 }
 
 canvas{
+  z-index: 1;
   margin: auto;
   position: absolute;
   top: 0;
@@ -12,6 +13,22 @@ canvas{
   left: 0;
   right: 0;
   background-color: #4b4b4b;
+}
+
+.botao-reset {
+  z-index: 2000;
+}
+
+.background-jogo {
+  background-image: url("./assets/fundo-jogo.svg");
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.background-jogo-play {
+  background-image: url("./assets/fundo-jogo-2.svg");
+  background-repeat: no-repeat;
+  width: 100%;
 }
 
 .hide {

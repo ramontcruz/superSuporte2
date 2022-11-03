@@ -23,6 +23,7 @@ var botao = document.getElementById("botao");
 var botaoReiniciar = document.getElementById("botao-reiniciar");
 var formControl = document.querySelector(".input-group");
 var nome = document.querySelector(".form-control");
+var container = document.querySelector("body");
 
 
 document.addEventListener("keydown", function(event){
@@ -117,9 +118,6 @@ botaoReiniciar.onclick = () => {
 }
 
 
-
-
-
 function collides() {
   if (estagiario.collide(chamadoUrgente)){
     chamadoUrgente.respaw();
@@ -161,6 +159,8 @@ function draw() {
     canvasArea.classList.add("hide");
 
   } else if (play=="jogo"){
+    container.classList.remove("background-jogo");
+    container.classList.add("background-jogo-play");
     canvasArea.classList.remove("hide");
     estagiario.draw();
     chamadoUrgente.draw();
@@ -174,6 +174,7 @@ function draw() {
   } else if (play=="final"){
    // Tela de Game Over
    //Fundo Game Over
+   
     if (estagiario.pts>2) {
       //canvasArea.classList.add("hide");
       bgGameOver2.draw();
@@ -183,6 +184,7 @@ function draw() {
       //alterar para bg de campeao
       //canvasArea.classList.add("hide");
       bgGameOver2.draw();
+
       botaoReiniciar.classList.remove("hide");
       //
       //canvasArea.classList.add("hide");
@@ -191,7 +193,7 @@ function draw() {
 
     //Textos de Game Over
     if (estagiario.pts<=5) {
-      gameover.draw(estagiario.pts, 150,500, "black");
+      //gameover.draw(estagiario.pts, 150,500, "black");
       pontuacao.color = "assets/pontuacao1.JPG";
       pontuacao.draw();
       estagiario.x = 420;
@@ -200,7 +202,7 @@ function draw() {
       gameover.draw("Você é um estagiário iniciante. Vamos evoluir juntos!!", 150,50, "black");
     } 
     else if (estagiario.pts<=60 && estagiario.pts>5){
-      gameover.draw(estagiario.pts, 150,400, "black");
+      //gameover.draw(estagiario.pts, 150,400, "black");
       pontuacao.color = "assets/pontuacao2.JPG";
       pontuacao.draw();
       estagiario.x = 400;
@@ -209,7 +211,7 @@ function draw() {
       gameover.draw("Você é um estagiário intermediário. Excelente avanço!!", 150,50, "black");
     } 
     else if (estagiario.pts<=100 && estagiario.pts>60){
-      gameover.draw(estagiario.pts, 150,300, "black");
+      //gameover.draw(estagiario.pts, 150,300, "black");
       pontuacao.color = "assets/pontuacao3.JPG";
       pontuacao.draw();
       estagiario.x = 400;
@@ -218,7 +220,7 @@ function draw() {
       gameover.draw("Você é um estagiário avançado. Está preparado para voar!!", 150,50, "black");
     } 
     else if (estagiario.pts<=340 && estagiario.pts>100){
-      gameover.draw(estagiario.pts, 150,200, "black");
+      //gameover.draw(estagiario.pts, 150,200, "black");
       pontuacao.color = "assets/pontuacao4.JPG";
       pontuacao.draw();
       estagiario.x = 400;
@@ -227,7 +229,7 @@ function draw() {
       gameover.draw("Você é um estagiário mestre. Você é destaque da equipe!!", 150,50, "black");
     }
     else {
-      gameover.draw(estagiario.pts, 150,50, "black");
+      //gameover.draw(estagiario.pts, 150,50, "black");
       pontuacao.color = "assets/pontuacao4.JPG";
       pontuacao.draw();
       estagiario.x = 400;
@@ -237,7 +239,7 @@ function draw() {
     }
     gameover.draw("GameOver", 290,450, "black");
     gameover.draw("Sua pontuação: "+estagiario.pts+" estrelas", 250,470, "black");
-    gameover.draw("Pressione a tecla r para reiniciar", 210,100, "black");
+    //gameover.draw("Pressione a tecla r para reiniciar", 210,100, "black");
 
     
   }
@@ -298,7 +300,6 @@ function update() {
     }   
     collides();
     gameOver();
-  
   } 
 
 }
